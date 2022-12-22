@@ -83,28 +83,28 @@ public class Booking {
         this.comment = comment;
     }
 
-    public Status getStatusStatusid() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatusStatusid(Status statusStatusid) {
-        this.status = statusStatusid;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    public User getUserUserid() {
+    public User getUser() {
         return user;
     }
 
-    public void setUserUserid(User userUserid) {
-        this.user = userUserid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Room getRoomRoomid() {
+    public Room getRoom() {
         return room;
     }
 
-    public void setRoomRoomid(Room roomRoomid) {
-        this.room = roomRoomid;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
 }

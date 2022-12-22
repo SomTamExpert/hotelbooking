@@ -90,20 +90,20 @@ public class Room {
         this.number = number;
     }
 
-    public Category getCategoryCategoryid() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategoryCategoryid(Category categoryCategoryid) {
-        this.category = categoryCategoryid;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public Status getStatusStatusid() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatusStatusid(Status statusStatusid) {
-        this.status = statusStatusid;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
 }
