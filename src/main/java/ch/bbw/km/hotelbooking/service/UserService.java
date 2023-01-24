@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public User getUserById(int id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with id " + id + " not found"));
@@ -36,6 +37,7 @@ public class UserService {
         userToUpdate.setRole(user.getRole());
         return userRepository.save(userToUpdate);
     }
+
     public void deleteUser(int id) {
         User userToDelete = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with id " + id + " not found"));
         userRepository.delete(userToDelete);
@@ -44,10 +46,11 @@ public class UserService {
 
     public User loginUser(User user) {
         User userToLogin = userRepository.getUserByEmail(user.getEmail());
-        if (userToLogin.getPassword().equals(user.getPassword())) {
-            return userToLogin;
-        } else {
-            throw new RuntimeException("Wrong password");
+        if (userToLogin != null) {
+            if (userToLogin.getPassword().equals(user.getPassword())) {
+                return userToLogin;
+            }
         }
+        return null;
     }
 }

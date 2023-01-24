@@ -9,32 +9,21 @@ import jakarta.validation.constraints.Size;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Integer id;
 
     @Size(max = 45)
-    @NotNull
-    @Column(nullable = false, length = 45)
     private String firstname;
 
     @Size(max = 45)
-    @NotNull
-    @Column(nullable = false, length = 45)
     private String lastname;
 
     @Size(max = 45)
-    @NotNull
-    @Column(nullable = false, length = 45)
     private String email;
 
     @Size(max = 255)
-    @NotNull
-    @Column(nullable = false)
     private String password;
 
     @Size(max = 255)
-    @NotNull
-    @Column(nullable = false)
     private String role;
 
     public Integer getId() {
