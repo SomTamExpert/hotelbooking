@@ -16,8 +16,6 @@ public class Category {
     private Integer id;
 
     @Size(max = 255)
-    @NotNull
-    @Column(nullable = false)
     private String title;
 
     @Size(max = 255)

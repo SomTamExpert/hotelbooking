@@ -1,5 +1,6 @@
 package ch.bbw.km.hotelbooking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,20 +15,13 @@ public class Booking {
     @Column(nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(nullable = false)
     private Instant arrival;
 
-    @NotNull
-    @Column(nullable = false)
     private Instant checkout;
 
-    @NotNull
-    @Column(nullable = false)
-    private Boolean breakfast = false;
+    private Boolean breakfast;
 
     @Size(max = 255)
-    @Column()
     private String comment;
 
 
@@ -91,6 +85,7 @@ public class Booking {
         this.status = status;
     }
 
+    @JsonIgnore
     public User getUser() {
         return user;
     }
@@ -99,6 +94,7 @@ public class Booking {
         this.user = user;
     }
 
+    @JsonIgnore
     public Room getRoom() {
         return room;
     }

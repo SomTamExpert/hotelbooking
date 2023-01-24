@@ -12,25 +12,15 @@ public class Room {
     @Column(nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(nullable = false)
     private Integer capacity;
 
     @Size(max = 255)
-    @NotNull
-    @Column(nullable = false)
     private String price;
 
-    @NotNull
-    @Column(nullable = false)
     private Boolean balcony = false;
 
-    @NotNull
-    @Column(nullable = false)
     private Boolean bathtub = false;
 
-    @NotNull
-    @Column(nullable = false)
     private Integer number;
 
 

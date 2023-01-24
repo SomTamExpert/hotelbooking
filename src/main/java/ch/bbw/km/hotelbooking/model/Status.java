@@ -13,8 +13,6 @@ public class Status {
     private Integer id;
 
     @Size(max = 30)
-    @NotNull
-    @Column(nullable = false, length = 30)
     private String status;
 
     public Integer getId() {
