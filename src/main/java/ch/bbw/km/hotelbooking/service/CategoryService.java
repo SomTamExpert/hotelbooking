@@ -4,6 +4,7 @@ import ch.bbw.km.hotelbooking.model.Category;
 import ch.bbw.km.hotelbooking.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class CategoryService {
@@ -30,5 +31,10 @@ public class CategoryService {
         categoryToUpdate.setTitle(category.getTitle());
         categoryToUpdate.setRooms(category.getRooms());
         return categoryRepository.save(categoryToUpdate);
+    }
+
+    public void deleteCategoryById(@PathVariable int id) {
+        Category categoryToDelete = categoryRepository.findById(id).orElseThrow( () -> new RuntimeException("Category with id " + id + " not found"));
+        categoryRepository.delete(categoryToDelete);
     }
 }
