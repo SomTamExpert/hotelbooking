@@ -85,7 +85,6 @@ public class Booking {
         this.status = status;
     }
 
-    @JsonIgnore
     public User getUser() {
         return user;
     }
@@ -94,7 +93,6 @@ public class Booking {
         this.user = user;
     }
 
-    @JsonIgnore
     public Room getRoom() {
         return room;
     }

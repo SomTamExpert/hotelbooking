@@ -36,13 +36,23 @@ public class BookingController {
     }
 
     @PostMapping
-    public Booking createBooking(Booking booking) {
+    public Booking createBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);
     }
 
     @PutMapping("/{id}")
-    public Booking updateBooking(@PathVariable int id, Booking booking) {
+    public Booking updateBooking(@PathVariable int id, @RequestBody Booking booking) {
         return bookingService.updateBooking(id, booking);
+    }
+
+    @PutMapping("/cancel/{id}")
+    public Booking cancelBooking(@PathVariable int id, @RequestBody Booking booking) {
+        return bookingService.cancelBooking(id, booking);
+    }
+
+    @PutMapping("/confirm/{id}")
+    public Booking confirmBooking(@PathVariable int id, @RequestBody Booking booking) {
+        return bookingService.confirmBooking(id, booking);
     }
 
     @DeleteMapping("/{id}")
