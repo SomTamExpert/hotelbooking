@@ -2,14 +2,11 @@ package ch.bbw.km.hotelbooking.service;
 
 import ch.bbw.km.hotelbooking.model.Booking;
 import ch.bbw.km.hotelbooking.model.Status;
-import ch.bbw.km.hotelbooking.model.User;
 import ch.bbw.km.hotelbooking.repository.BookingRepository;
 import ch.bbw.km.hotelbooking.repository.StatusRepository;
-import ch.bbw.km.hotelbooking.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -20,9 +17,6 @@ public class BookingService {
 
     @Autowired
     private StatusRepository statusRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
 
     public Booking getBookingById(int id) {
@@ -74,7 +68,6 @@ public class BookingService {
         return bookingRepository.save(bookingToUpdate);
     }
 
-    //confirm booking
     public Booking confirmBooking(int id, Booking booking) {
         Booking bookingToUpdate = bookingRepository.findById(id).orElseThrow(() -> new RuntimeException("Booking with id " + id + " not found"));
         bookingToUpdate.setUser(bookingToUpdate.getUser());
