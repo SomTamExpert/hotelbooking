@@ -42,4 +42,8 @@ public class UserController {
     public User loginUser(@RequestBody User user) {
         return userService.loginUser(user);
     }
+    @GetMapping("/search/{lastname}")
+    public Iterable<User> getUsersByLastname(@PathVariable String lastname) {
+        return userService.getUsersByLastname(lastname);
+    }
 }

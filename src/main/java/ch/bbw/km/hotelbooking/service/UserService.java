@@ -63,4 +63,8 @@ public class UserService {
             throw new RuntimeException("User not found");
         }
     }
+
+    public Iterable<User> getUsersByLastname(String lastname) {
+        return userRepository.findByLastname(lastname);
+    }
 }
