@@ -1,8 +1,10 @@
 package ch.bbw.km.hotelbooking.service;
 
 import ch.bbw.km.hotelbooking.model.User;
+import ch.bbw.km.hotelbooking.repository.BookingRepository;
 import ch.bbw.km.hotelbooking.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BookingRepository bookingRepository;
 
     public User getUserById(int id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with id " + id + " not found"));
@@ -38,19 +43,24 @@ public class UserService {
         return userRepository.save(userToUpdate);
     }
 
+    @Transactional
     public void deleteUser(int id) {
+        bookingRepository.deleteByUserId(id);
         User userToDelete = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with id " + id + " not found"));
         userRepository.delete(userToDelete);
     }
 
 
     public User loginUser(User user) {
-        User userToLogin = userRepository.getUserByEmail(user.getEmail());
-        if (userToLogin != null) {
+        try {
+            User userToLogin = userRepository.getUserByEmail(user.getEmail());
             if (userToLogin.getPassword().equals(user.getPassword())) {
                 return userToLogin;
+            } else {
+                throw new RuntimeException("Wrong password");
             }
+        } catch (Exception e) {
+            throw new RuntimeException("User not found");
         }
-        return null;
     }
 }

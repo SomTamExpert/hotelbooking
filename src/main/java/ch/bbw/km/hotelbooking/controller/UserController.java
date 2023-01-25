@@ -40,7 +40,6 @@ public class UserController {
 
     @PostMapping("/login")
     public User loginUser(@RequestBody User user) {
-        System.out.println("email: " + user.getEmail()+ " password: " + user.getPassword());
         return userService.loginUser(user);
     }
 }
