@@ -2,6 +2,7 @@ package ch.bbw.km.hotelbooking.controller;
 
 import ch.bbw.km.hotelbooking.model.Booking;
 import ch.bbw.km.hotelbooking.service.BookingService;
+import ch.bbw.km.hotelbooking.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,9 @@ public class BookingController {
 
     @Autowired
     BookingService bookingService;
+
+    @Autowired
+    LogService logService;
 
     /**
      * get booking by id
@@ -54,6 +58,7 @@ public class BookingController {
      */
     @PostMapping
     public Booking createBooking(@RequestBody Booking booking) {
+        logService.log("Booking created", "creation");
         return bookingService.createBooking(booking);
     }
 
